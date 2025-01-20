@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcular Precio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Calcular Precio</h1>
+    <div class="mb-3">
+      <label for="productName" class="form-label">Producto</label>
+      <input type="text" id="productName" class="form-control" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Precio Detal</label>
+      <input type="text" id="productPrice" class="form-control" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="clientType" class="form-label">Tipo de Cliente</label>
+      <select id="clientType" class="form-select" required>
+        <option value="detal">Detal</option>
+        <option value="mayorista">Mayorista</option>
+        <option value="restaurante">Restaurante</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="productQuantity" class="form-label">Cantidad (kg/unidades)</label>
+      <input type="number" id="productQuantity" class="form-control" required>
+    </div>
+    <div class="form-check mb-3">
+      <input type="checkbox" id="applyIVA" class="form-check-input">
+      <label class="form-check-label" for="applyIVA">Aplicar IVA (19%)</label>
+    </div>
+    <div class="mb-3">
+      <label for="calculatedPrice" class="form-label">Precio Total</label>
+      <input type="text" id="calculatedPrice" class="form-control" readonly>
+    </div>
+    <button class="btn btn-primary" onclick="calculatePrice()">Calcular</button>
+    <!-- Botón Volver -->
+    <button id="backBtn" class="btn btn-secondary">Volver</button>
+  </div>
+
+  <script>
+    // Obtener el código del producto de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productCode = urlParams.get('codigo');
+
+    // Cargar el producto correspondiente desde productos.json
+    fetch('productos.json')
+      .then(response => response.json())
+      .then(data => {
+        const product = data.find(p => p.codigo === productCode);
+        if (product) {
+          // Completar los campos del producto
+          document.getElementById('productName').value = product.nombre;
+          document.getElementById('productPrice').value = product.precios.detal;
+          // Guardar el producto seleccionado para el cálculo
+          window.selectedProduct = product;
+        }
+      });
+
+    // Función para calcular el precio
+    function calculatePrice() {
+      const quantity = parseFloat(document.getElementById('productQuantity').value) || 0;
+      const applyIVA = document.getElementById('applyIVA').checked;
+      const clientType = document.getElementById('clientType').value;
+
+      const basePrice = window.selectedProduct.precios[clientType];
+      let totalPrice = basePrice * quantity;
+
+      if (applyIVA) {
+        // Calcular el precio sin IVA (descontar el IVA del precio total)
+        totalPrice = totalPrice / 1.19; // El precio neto, es decir, sin IVA
+      }
+
+      // Mostrar el precio con 4 decimales
+      document.getElementById('calculatedPrice').value = totalPrice.toFixed(4);
+    }
+
+    // Redirigir a la página de productos al hacer clic en el botón "Volver"
+    document.getElementById('backBtn').addEventListener('click', function() {
+      window.location.href = 'index.html'; // Cambia el nombre de la página si es necesario
+    });
+  </script>
+</body>
+</html>

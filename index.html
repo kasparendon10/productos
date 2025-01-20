@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Productos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="libs/bootstrap.min.css">
+  <link rel="stylesheet" href="libs/datatables.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Gestión de Productos</h1>
+    <table id="productTable" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Precio Detal</th>
+          <th>Precio Mayorista</th>
+          <th>Precio Restaurante</th>
+          <th>Precio caja</th>
+          <th>Cantidad caja</th>
+          <th>IVA</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Contenido dinámico -->
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-start">
+      <button class="btn btn-info" onclick="goToDescription()">Descripción de Producto</button>
+    </div>
+     <!-- Aquí agregamos el enlace "Ruta" usando <a> en lugar de un botón -->
+        <div class="d-flex justify-content-start mt-3">
+            <a href="diseñar-ruta.html" class="btn btn-success">Ruta</a>
+          </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="libs/jquery.min.js"></script>
+  <script src="libs/datatables.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+<script>
+// Cargar el archivo JSON una sola vez
+let productsData = [];
+
+fetch('productos.json')
+  .then(response => response.json())
+  .then(data => {
+    productsData = data;
+    initializeTable(productsData);
+  })
+  .catch(error => console.error('Error al cargar los productos:', error));
+
+// Inicializar la tabla con DataTables
+function initializeTable(products) {
+  const tableBody = $('#productTable tbody');
+  
+  // Limpiar la tabla antes de renderizar
+  tableBody.empty();
+
+  products.forEach(product => {
+    const ivaText = product.iva ? 'Sí' : 'No';
+    const row = `
+      <tr>
+        <td>${product.codigo}</td>
+        <td>${product.nombre}</td>
+        <td class="precio-detal">${product.precios.detal}</td>
+        <td class="precio-mayorista">${product.precios.mayorista}</td>
+        <td class="precio-restaurante">${product.precios.restaurante}</td>
+        <td class="Precio-caja">${product.precios.caja}</td>
+        <td class="cantidad_caja">${product.precios.cantidad_caja}</td>
+        <td><span class="iva">${ivaText}</span></td>
+        <td>${product.descripcion.tipo}, ${product.descripcion.origen}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" onclick="goToCalculator('${product.codigo}')">Calcular</button>
+          <button class="btn btn-info btn-sm" onclick="goToDescription('${product.codigo}')">Descripción</button>
+        </td>
+      </tr>
+    `;
+    tableBody.append(row);
+  });
+
+  // Inicializar DataTable
+  $('#productTable').DataTable();
+}
+
+// Redirigir a calculator.html pasando el código del producto
+function goToCalculator(codigo) {
+  const url = `calculator.html?codigo=${codigo}`;
+  window.location.href = url;
+}
+
+// Redirigir a la página de descripción con el código del producto
+function goToDescription(codigo) {
+  const url = `product-description.html?codigo=${codigo}`;
+  window.location.href = url;
+}
+// Función para el botón Ruta
+function goToRoute() {
+  const url = `diseñar-ruta.html`; // Redirige a diseñar-ruta.html
+  window.location.href = url;
+}
+
+// Obtener el producto por código desde los datos cargados
+function getProductByCodigo(codigo) {
+  return productsData.find(p => p.codigo === codigo);
+}
+</script>

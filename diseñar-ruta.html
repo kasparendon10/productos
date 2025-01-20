@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizador de Rutas de Domicilios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #listaPedidos {
+            margin-top: 20px;
+        }
+        .pedido-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            background-color: #f9f9f9;
+        }
+        #loading {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            margin-bottom: 20px;
+        }
+        #error-container {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ruta de Domicilios</h1>
+    
+    <div id="loading">Cargando el mapa...</div>
+    <div id="error-container"></div>
+
+    <form id="pedidoForm" style="display: none;">
+        <div class="form-group">
+            <label for="direccion">Dirección del Domicilio:</label>
+            <input type="text" id="direccion" required>
+        </div>
+        <div class="form-group">
+            <label for="pedido">Pedido:</label>
+            <input type="text" id="pedido" required>
+        </div>
+        <div class="form-group">
+            <label for="domiciliario">Domiciliario:</label>
+            <select id="domiciliario" required>
+                <option value="1">Domiciliario 1</option>
+                <option value="2">Domiciliario 2</option>
+                <option value="3">Domiciliario 3</option>
+            </select>
+        </div>
+        <button type="submit">Añadir Pedido</button>
+    </form>
+
+    <div id="map"></div>
+    
+    <h2>Pedidos</h2>
+    <div id="listaPedidos"></div>
+
+    <script>
+        let map;
+        let mapaInicializado = false;
+        let directionsService;
+        let directionsRenderer;
+        let geocoder;
+
+        // Función de inicialización del mapa
+        function initMap() {
+            if (!window.google || !google.maps) {
+                mostrarError('Google Maps no está disponible. Verifica la conexión y recarga la página.');
+                return;
+            }
+
+            try {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 4.5409, lng: -75.6659 },
+                    zoom: 13,
+                });
+
+                directionsService = new google.maps.DirectionsService();
+                directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+                geocoder = new google.maps.Geocoder();
+
+                mapaInicializado = true;
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('pedidoForm').style.display = 'block';
+                mostrarPedidos();
+            } catch (error) {
+                mostrarError('Error al inicializar el mapa: ' + error.message);
+            }
+        }
+
+        // Función para mostrar errores en pantalla
+        function mostrarError(mensaje) {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.textContent = mensaje;
+            console.error(mensaje);
+            setTimeout(() => {
+                errorContainer.textContent = '';
+            }, 5000);
+        }
+
+        // Función para guardar pedidos en localStorage
+        function guardarPedido(datos) {
+            let pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+            pedidos.push({ id: Date.now(), ...datos });
+            localStorage.setItem('pedidos', JSON.stringify(pedidos));
+            mostrarPedidos();
+            document.getElementById('pedidoForm').reset();
+        }
+
+        // Función para mostrar los pedidos almacenados
+        function mostrarPedidos() {
+            const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+            const container = document.getElementById('listaPedidos');
+            container.innerHTML = pedidos.map(pedido => `
+                <div class="pedido-item">
+                    <strong>Dirección:</strong> ${pedido.direccion}<br>
+                    <strong>Pedido:</strong> ${pedido.pedido}<br>
+                    <strong>Domiciliario:</strong> ${pedido.domiciliario}
+                </div>
+            `).join('');
+        }
+
+        // Evento DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('pedidoForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (!mapaInicializado) {
+                    mostrarError('El mapa aún no está listo. Por favor, espera un momento.');
+                    return;
+                }
+
+                const direccion = document.getElementById('direccion').value;
+                const pedido = document.getElementById('pedido').value;
+                const domiciliario = document.getElementById('domiciliario').value;
+
+                geocoder.geocode({ 
+                    address: `${direccion}, Armenia, Quindío, Colombia`
+                }, (results, status) => {
+                    if (status === 'OK') {
+                        guardarPedido({
+                            direccion,
+                            pedido,
+                            domiciliario,
+                            lat: results[0].geometry.location.lat(),
+                            lng: results[0].geometry.location.lng()
+                        });
+                    } else {
+                        mostrarError('No se pudo encontrar la dirección. Error: ' + status);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Google Maps Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiKkwKqXse5mcndGVmvDvbxwfarctfanI&callback=initMap&callback=initMap" async defer></script>
+</body>
+</html>

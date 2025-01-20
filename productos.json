@@ -1,0 +1,988 @@
+[
+    {
+      "codigo": "135",
+      "nombre": "ALA POLLO CONGELADA",
+      "precios": {
+        "detal": 13900,
+        "mayorista": "NO",
+        "restaurante": 12700,
+        "caja": "NO",
+        "cantidad_caja": 10
+      },
+
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "Granja",
+        "caracteristicas": "Alto en proteínas, versátil, bajo en grasas (dependiendo del corte), textura tierna"
+      },
+      "tallas":["Entero", "Medio", "Cuartos", "Piezas"],
+      "usos": ["Asar", "Freír", "Hornear", "Saltear", "Hervir", "Cocer al vapor", "Grillar"],
+      "platos_comunes": [
+    "Pollo asado",
+    "Pollo al horno",
+    "Pollo frito",
+    "Estofado de pollo",
+    "Sopa de pollo",
+    "Pollo a la parrilla",
+    "Tacos de pollo",
+    "Pollo en salsa"
+  ],
+  "complementos": [
+    "Salsa picante Sriracha",
+    "Salsa vinagreta Safran",
+    "Salsa de queso Zafran",
+    "Salsa BBQ",
+    "Salsa agridulce Vermelo",
+    "Salsa Showy ajo",
+    "Caldo de pollo",
+    "Panko",
+    "Verduras mixtas",
+    "Mantequilla",
+    "Crema de coco",
+    "Costilla de cerdo ahumada",
+    "Tocineta ahumada",
+    "Maíz super dulce",
+    "Tocineta de cerdo trozos",
+    "Contramuslo de pollo",
+    "Pechuga entera congelada",
+    "Muslos de pollo",
+    "Ala de pollo"
+  ]
+    },
+    {
+      "codigo": "600",
+      "nombre": "CAMARON 21-25",
+      "precios": {
+        "detal": 34000,
+        "mayorista": 33000,
+        "restaurante": 33500,
+        "caja": "",
+        "cantidad_caja": "pendiente por completar"
+      },
+      "iva": false,
+      "descripcion": {
+    "tipo": "Importado",
+    "origen": "Mar",
+    "caracteristicas": "Sin espinas, magro, alto en proteínas, bajo en calorías, rico en Omega-3, textura firme"
+  },
+  "tallas": ["M", "L", "XL"],
+  "usos": ["Freír", "Sudar", "Apanar", "Saltear", "Hervir", "Grillar", "Cocer al vapor"],
+  "platos_comunes": [
+    "Ceviche de camarón",
+    "Camarones al ajillo",
+    "Camarones a la parrilla",
+    "Paella",
+    "Camarones en salsa de coco",
+    "Camarones empanizados",
+    "Tacos de camarón",
+    "Cocktail de camarón"
+  ],
+  "complementos": ["Salsas", "Limón", "Ajo", "Perejil", "Mantequilla", "Aceite de oliva", "Pimienta", "Arroz", "Pasta"]
+},
+    {
+      "codigo": "602",
+      "nombre": "CAMARON 36-40",
+      "precios": {
+        "detal": 28500,
+        "mayorista": "pendiente por completar",
+        "restaurante": 28000,
+        "caja": "pendiente por completar",
+        "cantidad_caja": "pendiente por completar"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar",
+        "caracteristicas": "Sin espinas, magro, alto en proteínas, bajo en calorías, rico en Omega-3, textura firme"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Sudar", "Apanar", "Saltear", "Hervir", "Grillar", "Cocer al vapor"],
+      "complementos": ["Salsas", "Limón"]
+    },
+    {
+      "codigo": "604",
+      "nombre": "CAMARON 41-50",
+      "precios": {
+        "detal": 27500,
+        "mayorista": "pendiente por completar",
+        "restaurante": 27000,
+        "caja": "pendiente por completar",
+        "cantidad_caja": "pendiente por completar"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar",
+        "caracteristicas": "Sin espinas, magro"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Sudar", "Apanar"],
+      "complementos": ["Salsas", "Limón"]
+    },
+    {
+      "codigo": "606",
+      "nombre": "CAMARON 51-60",
+      "precios": {
+        "detal": 26800,
+        "mayorista": "pendiente por completar",
+        "restaurante": 26300,
+        "caja": "pendiente por completar",
+        "cantidad_caja": "pendiente por completar"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar",
+        "caracteristicas": "Sin espinas, magro"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Sudar", "Apanar"],
+      "complementos": ["Salsas", "Limón"]
+    },
+    {
+      "codigo": "608",
+      "nombre": "CAMARON 61-70",
+      "precios": {
+        "detal": 26000,
+        "mayorista": "pendiente por completar",
+        "restaurante": 25500,
+        "caja": "pendiente por completar",
+        "cantidad_caja": "pendiente por completar"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar",
+        "caracteristicas": "Sin espinas, magro"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Sudar", "Apanar"],
+      "complementos": ["Salsas", "Limón"]
+    },
+    {
+      "codigo": "044",
+      "nombre": "BOCACHICO",
+      "precios": {
+        "detal": 16000,
+        "mayorista": 15000,
+        "restaurante": 15500,
+        "caja": 15200,
+        "cantidad_caja": 20
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "Agua Dulce",
+        "caracteristicas": "sin espina, magro"
+      },
+      "tallas": ["S", "M", "L"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Cocer", "Ahumar"],
+      "complementos":[
+        "Salsa picante Sriracha",
+        "Salsa vinagreta Safran",
+        "Salsa BBQ",
+        "Salsa Showy ajo",
+        "Caldo de pescado",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Crema de coco",
+        "Costilla de cerdo ahumada",
+        "Tocineta ahumada",
+        "Maíz super dulce",
+        "Ajo",
+        "Perejil",
+        "Limon",
+        "Arroz",
+        "Aceite de oliva"
+      ]
+    },
+    {
+      "codigo": "013F-3",
+      "nombre": "FILETE DE BASA X 3",
+      "precios": {
+        "detal": 11200,
+        "mayorista": 10000,
+        "restaurante": 10800,
+        "caja": 10500,
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado,Asia",
+        "origen": "Mar",
+        "caracteristicas": "Filete sin espinas, magro, carne firme"
+      },
+      "tallas": ["3", "4", "5", "6"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Salsa BBQ",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Crema de coco",
+        "Ajo picado",
+        "Limón",
+        "Papas fritas",
+        "Arroz basmati",
+        "Pechuga de pollo"
+      ]
+    },
+    {
+      "codigo": "013F-4",
+      "nombre": "FILETE DE BASA X 3",
+      "precios": {
+        "detal": 11200,
+        "mayorista": 10000,
+        "restaurante": 10800,
+        "caja": 10500,
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado,Asia",
+        "origen": "Mar",
+        "caracteristicas": "Filete sin espinas, magro, carne firme"
+      },
+      "tallas": ["3", "4", "5", "6"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Salsa BBQ",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Crema de coco",
+        "Ajo picado",
+        "Limón",
+        "Papas fritas",
+        "Arroz basmati",
+        "Pechuga de pollo"
+      ]
+    },
+    {
+      "codigo": "013F-5",
+      "nombre": "FILETE DE BASA X 3",
+      "precios": {
+        "detal": 11200,
+        "mayorista": 10000,
+        "restaurante": 10800,
+        "caja": 10500,
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado,Asia",
+        "origen": "Mar",
+        "caracteristicas": "Filete sin espinas, magro, carne firme"
+      },
+      "tallas": ["3", "4", "5", "6"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Salsa BBQ",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Crema de coco",
+        "Ajo picado",
+        "Limón",
+        "Papas fritas",
+        "Arroz basmati",
+        "Pechuga de pollo"
+      ]
+    },
+    {
+      "codigo": "013F-6",
+      "nombre": "FILETE DE BASA X 3",
+      "precios": {
+        "detal": 11200,
+        "mayorista": 10000,
+        "restaurante": 10800,
+        "caja": 10500,
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado,Asia",
+        "origen": "Mar",
+        "caracteristicas": "Filete sin espinas, magro, carne firme"
+      },
+      "tallas": ["3", "4", "5", "6"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Salsa BBQ",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Crema de coco",
+        "Ajo picado",
+        "Limón",
+        "Papas fritas",
+        "Arroz basmati",
+        "Pechuga de pollo"
+      ]
+    },
+    {
+      "codigo": "002",
+      "nombre": "Tilapia",
+      "precios": {
+        "detal": 12000,
+        "mayorista": 11000,
+        "restaurante": 11500,
+        "caja": 100000,
+        "cantidad_caja": 12
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "Agua Dulce",
+        "caracteristicas": "Con espinas"
+      },
+      "tallas": ["S", "M", "L"],
+      "usos": ["Freír", "Sudar"],
+      "complementos": ["Harina", "Aceite"]
+    },
+    {
+      "codigo": "058",
+      "nombre": "CABEZA DE BAGRE",
+      "precios": {
+        "detal": 8800,
+        "mayorista": 11000,
+        "restaurante": 8500,
+        "caja": "COGOTE",
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar",
+        "caracteristicas": "Sin espinas, magro"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Sudar", "Apanar"],
+      "complementos": ["Salsas", "Limón"]
+    },
+    {
+      "codigo": "555F-3",
+      "nombre": "Filete de Tilapia",
+      "precios": {
+        "detal": 19500,
+        "mayorista": 17500,
+        "restaurante": 18000,
+        "caja": 17800,
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "agua dulce, Asia",
+        "caracteristicas": "Filete sin espinas, carne firme y suave, bajo en grasa"
+      },
+      "tallas": ["3-5"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón",
+        "Ajo picado",
+        "Papas fritas",
+        "Pechuga de pollo"
+      ]
+    },
+    {
+      "codigo": "555F-5",
+      "nombre": "Filete de Tilapia",
+      "precios": {
+        "detal": 19500,
+        "mayorista": 18500,
+        "restaurante": 18800,
+        "caja": 17800,
+        "cantidad_caja": 10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "agua dulce, Asia",
+        "caracteristicas": "Filete sin espinas, carne firme y suave, bajo en grasa"
+      },
+      "tallas": ["5-7"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón",
+        "Ajo picado",
+        "Papas fritas",
+        "Pechuga de pollo"
+      ]
+    },
+    {
+      "codigo": "081",
+      "nombre": "Mojarra 150-256 completa",
+      "precios": {
+        "detal": 15500,
+        "mayorista": "NO",
+        "restaurante": 14000,
+        "caja": "NO",
+        "cantidad_caja": "NO"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "agu dulce",
+        "caracteristicas": "Pescado entero, sin espinas, carne firme y jugosa"
+      },
+      "tallas": ["150g", "250g"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Ajo picado",
+        "Papas fritas"
+      ]
+    },
+    {
+      "codigo": "082",
+      "nombre": "Mojarra 250-350 completa",
+      "precios": {
+        "detal": 17000,
+        "mayorista": "NO",
+        "restaurante": 16000,
+        "caja":15700,
+        "cantidad_caja": "NO"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "agu dulce",
+        "caracteristicas": "Pescado entero, sin espinas, carne firme y jugosa"
+      },
+      "tallas": ["250g", "350g"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Ajo picado",
+        "Papas fritas"
+      ]
+    },
+    {
+      "codigo": "083",
+      "nombre": "Mojarra 350-450 completa",
+      "precios": {
+        "detal": 17000,
+        "mayorista": "NO",
+        "restaurante": 16000,
+        "caja": "NO",
+        "cantidad_caja": "NO"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "agu dulce",
+        "caracteristicas": "Pescado entero, sin espinas, carne firme y jugosa"
+      },
+      "tallas": ["350g", "450g"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Ajo picado",
+        "Papas fritas"
+      ]
+    },
+    {
+      "codigo": "084",
+      "nombre": "Mojarra 450-550 completa",
+      "precios": {
+        "detal": 17500,
+        "mayorista": "NO",
+        "restaurante": 16500,
+        "caja": "NO",
+        "cantidad_caja": "NO"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "agu dulce",
+        "caracteristicas": "Pescado entero, sin espinas, carne firme y jugosa"
+      },
+      "tallas": ["450g", "550g"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Ajo picado",
+        "Papas fritas"
+      ]
+    },
+    {
+      "codigo": "085",
+      "nombre": "Mojarra 550-600 completa",
+      "precios": {
+        "detal": 11500,
+        "mayorista": "NO",
+        "restaurante": 16500,
+        "caja": "NO",
+        "cantidad_caja": "NO"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Nacional",
+        "origen": "agu dulce",
+        "caracteristicas": "Pescado entero, sin espinas, carne firme y jugosa"
+      },
+      "tallas": ["150g", "250g"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Ajo picado",
+        "Papas fritas"
+      ]
+    },
+    {
+      "codigo": "035",
+      "nombre": "BAGRE BASA BANDEJAS",
+      "precios": {
+        "detal": 12800,
+        "mayorista":12500,
+        "restaurante":"NO",
+        "caja": "NO",
+        "cantidad_caja":0
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar, ASIA",
+        "caracteristicas": "Filete de bagre basa en bandeja, carne firme y suave, sin espinas"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón"
+      ]
+    },
+    {
+      "codigo": "035",
+      "nombre": "BAGRE BASA ENTERA",
+      "precios": {
+        "detal": 8900,
+        "mayorista":8900,
+        "restaurante":"NO",
+        "caja": 8900,
+        "cantidad_caja":10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar, ASIA",
+        "caracteristicas": "Filete de bagre basa en bandeja, carne firme y suave, sin espinas"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón"
+      ]
+    },
+    {
+      "codigo": "035",
+      "nombre": "BAGRE BASA CON COLA",
+      "precios": {
+        "detal": 9100,
+        "mayorista":9000,
+        "restaurante":"NO",
+        "caja":10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar, ASIA",
+        "caracteristicas": "Filete de bagre basa en bandeja, carne firme y suave, sin espinas"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón"
+      ]
+    },
+    {
+      "codigo": "035",
+      "nombre": "BAGRE BASA BAGRE BASA SOLO CENTRO",
+      "precios": {
+        "detal": 12800,
+        "mayorista":10700,
+        "restaurante":10800,
+        "caja": "NO",
+        "cantidad_caja":10
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar, ASIA",
+        "caracteristicas": "Filete de bagre basa en bandeja, carne firme y suave, sin espinas"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón"
+      ]
+    },
+    {
+      "codigo": "032",
+      "nombre": "SIERRA",
+      "precios": {
+        "detal": 19500,
+        "mayorista":"NO",
+        "restaurante": 18500,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Mar",
+        "caracteristicas": "Pescado entero, carne firme y jugosa, con espinas"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón"
+      ]
+    },
+    {
+      "codigo": "034",
+      "nombre": "TRUCHA MARIPOSA",
+      "precios": {
+        "detal": 20500,
+        "mayorista":"NO",
+        "restaurante": 19800,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Ríos y lagos",
+        "caracteristicas": "Trucha entera desespinada, carne firme y delicada"
+      },
+      "tallas": ["M", "L", "XL"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón"
+      ]
+    },
+    {
+      "codigo": "662",
+      "nombre": "VERDURAS MIXTAS*1KG",
+      "precios": {
+        "detal": 11500,
+        "mayorista":"NO",
+        "restaurante": 10800,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": true,
+      "descripcion": {
+        "tipo": "Congelada",
+        "origen": "Local",
+        "caracteristicas": "Mezcla de vegetales congelados: zanahoria, maíz"
+      },
+      "tallas": ["1 KG"],
+      "usos": ["Freír", "Cocinar", "Guisar", "Sopas", "Acompañamiento"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko"
+      ]
+    },
+    {
+      "codigo": "239",
+      "nombre": "PALMITOS",
+      "precios": {
+        "detal":6500,
+        "mayorista":"NO",
+        "restaurante":6000,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": true,
+      "descripcion": {
+        "tipo": "En conserva",
+        "origen": "Latinoamérica",
+        "caracteristicas": "Mezcla de vegetales congelados: zanahoria, maíz"
+      },
+      "tallas": ["1 KG"],
+      "usos": ["Ensaladas", "Sopas", "Acompañamientos", "Antipastos"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas"
+      ]
+    },
+    {
+      "codigo": "024",
+      "nombre": "FILETE DE SALMON ENTERO LONJA",
+      "precios": {
+        "detal":63000,
+        "mayorista":"NO",
+        "restaurante":62000,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Noruega",
+        "caracteristicas": "Filete de salmón fresco, carne suave y jugosa, sin espinas"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Ensaladas", "Sopas", "Acompañamientos", "Antipastos"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas"
+      ]
+    },
+    {
+      "codigo": "024",
+      "nombre": "FILETE DE SALMON PORCIONADO",
+      "precios": {
+        "detal":64000,
+        "mayorista":"NO",
+        "restaurante":63000,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Importado",
+        "origen": "Noruega",
+        "caracteristicas": "Filete de salmón fresco, carne suave y jugosa, sin espinas"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Ensaladas", "Sopas", "Acompañamientos", "Antipastos"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas"
+      ]
+    },
+    {
+      "codigo": "160",
+      "nombre": "FILETE DE PECHUGA",
+      "precios": {
+        "detal":18500,
+        "mayorista":"NO",
+        "restaurante":18000,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": false,
+      "descripcion": {
+        "tipo": "Fresca",
+        "origen": "Nacional",
+        "caracteristicas": "Filete de pechuga de pollo sin piel, carne magra y tierna"
+      },
+      "tallas": ["PESO VARIABLE"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar", "Sopas", "Ensaladas"],
+      "complementos": [
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        [
+          "Salsa picante Sriracha",
+          "Salsa BBQ",
+          "Salsa vinagreta Safran",
+          "Salsa de queso Zafran",
+          "Panko",
+          "Verduras mixtas",
+          "Mantequilla",
+          "Limón",
+          "Ajo picado"
+        ]
+      ]
+    },
+    {
+      "codigo": "109",
+      "nombre": "ANILLOS DE CALAMAR",
+      "precios": {
+        "detal":31000,
+        "mayorista":"NO",
+        "restaurante":30000,
+        "caja":"SI",
+        "cantidad_caja":"PENDIENTE"
+      },
+      "iva": true,
+      "descripcion": {
+        "tipo": "Congelado",
+        "origen": "Mar",
+        "caracteristicas": "Anillos de calamar de tamaño medio, carne firme y sabor delicado"
+      },
+      "tallas": ["1 KG"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar", "Sopas", "Ensaladas"],
+      "complementos":[
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas",
+        "Mantequilla",
+        "Limón",
+        "Ajo picado"
+      ]
+    },
+    {
+      "codigo": "105",
+      "nombre": "CALAMAR POTA",
+      "precios": {
+        "detal":25000,
+        "mayorista":"NO",
+        "restaurante":24000,
+        "caja":"SI",
+        "cantidad_caja":20
+      },
+      "iva": true,
+      "descripcion": {
+        "tipo": "Congelado",
+        "origen": "Mar",
+        "caracteristicas":"Cuerpo entero de calamar pota, carne firme y delicada, sin tentáculos"
+      },
+      "tallas": ["1 KG"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar", "Sopas", "Ensaladas"],
+      "complementos":[
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas"
+      ]
+    },
+    {
+      "codigo": "108",
+      "nombre": "CALAMAR TUBO LIMPIO",
+      "precios": {
+        "detal":31000,
+        "mayorista":"NO",
+        "restaurante":30000,
+        "caja":"SI",
+        "cantidad_caja":20
+      },
+      "iva": true,
+      "descripcion": {
+        "tipo": "Congelado",
+        "origen": "Mar",
+        "caracteristicas":"Cuerpo entero de calamar pota, carne firme y delicada, sin tentáculos"
+      },
+      "tallas": ["1 KG"],
+      "usos": ["Freír", "Hornear", "A la parrilla", "Guisar", "Sopas", "Ensaladas"],
+      "complementos":[
+        "Salsa picante Sriracha",
+        "Salsa BBQ",
+        "Salsa vinagreta Safran",
+        "Salsa de queso Zafran",
+        "Panko",
+        "Verduras mixtas"
+      ]
+    }
+    
+  ]

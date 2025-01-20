@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descripción del Producto</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 800px;
+      transform: translateY(-30px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-content.show {
+      transform: translateY(0);
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+    }
+
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --background-color: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--primary-color);
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.5rem;
+    }
+
+    #search {
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 0.8rem;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    #search:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    }
+
+    .table {
+      margin-top: 1.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .table thead th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 1rem;
+      border-bottom: none;
+    }
+
+    .table tbody tr {
+      transition: all 0.2s ease;
+    }
+
+    .table tbody tr:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+      transform: scale(1.01);
+    }
+
+    .table td {
+      padding: 1rem;
+      vertical-align: middle;
+    }
+
+    .precio-detal, .precio-mayorista, .precio-restaurante {
+      font-weight: bold;
+    }
+
+    .precio-detal { 
+      color: var(--accent-color); 
+    }
+
+    .precio-mayorista { 
+      color: #273bae; 
+    }
+
+    .precio-restaurante { 
+      color: #44ad4d; 
+    }
+
+    .iva {
+      background-color: #f1c40f;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .btn-action {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin: 0 0.2rem;
+    }
+
+    .btn-edit {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      border-bottom: 3px solid var(--secondary-color);
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .product-details {
+      padding: 1rem;
+    }
+
+    .detail-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-title {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--secondary-color);
+      padding-left: 0.8rem;
+    }
+
+    .detail-content {
+      font-size: 1rem;
+      color: #555;
+      margin-left: 1rem;
+    }
+
+    .prices-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .price-item {
+      background-color: #f8f9fa;
+      padding: 0.8rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .price-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: var(--primary-color);
+    }
+
+    .modal.fade .modal-dialog {
+      transform: scale(0.8);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .modal.show .modal-dialog {
+      transform: scale(1);
+    }
+    #backButton {
+  background-color: #e74c3c;  /* Color rojo */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#backButton:hover {
+  background-color: #c0392b;  /* Rojo más oscuro al pasar el cursor */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Productos</h1>
+    <button id="backButton" class="btn btn-secondary" onclick="goBack()">Volver</button>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar productos..." onkeyup="filterProducts()">
+    </div>
+    
+    <table id="productTable" class="display">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Precio Detal</th>
+          <th>Precio Mayorista</th>
+          <th>Precio Restaurante</th>
+          <th>IVA</th>
+          <th>Descripción</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Productos añadidos dinámicamente -->
+      </tbody>
+    </table>
+
+    <!-- Modal para los detalles -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalProductName"></h2>
+        <p id="modalProductDescription"></p>
+        <p id="modalProductUsos"></p>
+        <p id="modalProductComplementos"></p>
+        <p id="modalProductTallas"></p>
+        <p id="modalProductCantidadCaja"></p>
+      </div>
+    </div>
+
+    <script>
+      // Cargar los datos JSON
+      fetch('productos.json')
+        .then(response => response.json())
+        .then(products => {
+          initializeTable(products);
+          window.products = products;
+        });
+
+      // Inicializar la tabla con los productos
+      function initializeTable(products) {
+        const tableBody = $('#productTable tbody');
+        
+        products.forEach(product => {
+          const ivaText = product.iva ? 'Sí' : 'No';
+          const row = `
+            <tr>
+              <td>${product.codigo}</td>
+              <td>${product.nombre}</td>
+              <td class="precio-detal">${product.precios.detal}</td>
+              <td class="precio-mayorista">${product.precios.mayorista}</td>
+              <td class="precio-restaurante">${product.precios.restaurante}</td>
+              <td><span class="iva">${ivaText}</span></td>
+              <td>${product.descripcion.tipo}, ${product.descripcion.origen}</td>
+              <td>
+                <button class="btn btn-primary btn-sm" onclick="showProductDetails('${product.codigo}')">Descripción de Producto</button>
+              </td>
+            </tr>
+          `;
+          tableBody.append(row);
+        });
+
+        $('#productTable').DataTable();
+      }
+
+      // Filtrar productos
+      function filterProducts() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const table = document.getElementById('productTable');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) {
+          const cells = rows[i].getElementsByTagName('td');
+          let match = false;
+
+          for (let j = 0; j < cells.length; j++) {
+            if (cells[j].innerText.toLowerCase().includes(searchTerm)) {
+              match = true;
+              break;
+            }
+          }
+
+          rows[i].style.display = match ? '' : 'none';
+        }
+      }
+
+      // Mostrar detalles del producto
+      function showProductDetails(codigo) {
+        const product = window.products.find(p => p.codigo === codigo);
+
+        if (product) {
+          document.getElementById('modalProductName').innerText = product.nombre;
+          document.getElementById('modalProductDescription').innerText = `Tipo: ${product.descripcion.tipo}, Origen: ${product.descripcion.origen}, Características: ${product.descripcion.caracteristicas}`;
+          document.getElementById('modalProductUsos').innerText = `Usos: ${product.usos.join(', ')}`;
+          document.getElementById('modalProductComplementos').innerText = `Complementos: ${product.complementos.join(', ')}`;
+          document.getElementById('modalProductTallas').innerText = `Tallas disponibles: ${product.tallas.join(', ')}`;
+          document.getElementById('modalProductCantidadCaja').innerText = `Cantidad por caja: ${product.precios.cantidad_caja}`;
+
+          // Mostrar el modal
+          const modal = document.getElementById('productModal');
+          modal.style.display = 'block';
+          modal.querySelector('.modal-content').classList.add('show');
+        }
+      }
+      // Función para volver a la página principal
+  function goBack() {
+  window.location.href = 'index.html';  // Asegúrate de que este sea el nombre de tu página principal
+}
+
+      // Cerrar modal
+      document.querySelector('.close').addEventListener('click', function() {
+        const modal = document.getElementById('productModal');
+        modal.querySelector('.modal-content').classList.remove('show');
+        setTimeout(() => modal.style.display = 'none', 300);
+      });
+    </script>
+  </div>
+</body>
+</html>
