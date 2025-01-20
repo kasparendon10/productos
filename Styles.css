@@ -29,19 +29,47 @@
     padding-bottom: 0.5rem;
   }
   
-  #search {
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
-    padding: 0.8rem;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .container {
+      padding: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  
+    .table thead th, .table td {
+      padding: 0.5rem;
+    }
+  
+    .table {
+      font-size: 0.9rem;
+    }
+  
+    .btn {
+      font-size: 0.8rem;
+      padding: 0.5rem;
+    }
+  
+    /* Make table scrollable on small screens */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .table td, .table th {
+      white-space: nowrap;
+    }
+  
+    .btn-action {
+      padding: 0.3rem 0.6rem;
+    }
   }
   
-  #search:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-  }
-  
+  /* Estilos para la tabla */
   .table {
     margin-top: 1.5rem;
     border-radius: 10px;
@@ -119,67 +147,23 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
-  /* Estilos para la modal de detalles */
-  .modal-header {
-    border-bottom: 3px solid var(--secondary-color);
-  }
   
-  .modal-title {
-    font-size: 1.4rem;
-    font-weight: 500;
-  }
+  /* Responsividad para botones y tablas */
+  @media (max-width: 576px) {
+    .btn-action {
+      font-size: 0.8rem;
+    }
   
-  .product-details {
-    padding: 1rem;
-  }
+    .container {
+      padding: 1rem;
+    }
   
-  .detail-item {
-    margin-bottom: 1.5rem;
-  }
+    .table-responsive {
+      overflow-x: auto;
+    }
   
-  .detail-title {
-    color: var(--primary-color);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    border-left: 4px solid var(--secondary-color);
-    padding-left: 0.8rem;
-  }
-  
-  .detail-content {
-    font-size: 1rem;
-    color: #555;
-    margin-left: 1rem;
-  }
-  
-  .prices-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-  
-  .price-item {
-    background-color: #f8f9fa;
-    padding: 0.8rem;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .price-label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.3rem;
-    color: var(--primary-color);
-  }
-  
-  /* Animación para la modal */
-  .modal.fade .modal-dialog {
-    transform: scale(0.8);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .modal.show .modal-dialog {
-    transform: scale(1);
+    h1 {
+      font-size: 1.8rem;
+    }
   }
   

@@ -15,35 +15,37 @@
   <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1 class="text-center">Gestión de Productos</h1>
-    <table id="productTable" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Nombre</th>
-          <th>Precio Detal</th>
-          <th>Precio Mayorista</th>
-          <th>Precio Restaurante</th>
-          <th>Precio caja</th>
-          <th>Cantidad caja</th>
-          <th>IVA</th>
-          <th>Descripción</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Contenido dinámico -->
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-start">
-      <button class="btn btn-info" onclick="goToDescription()">Descripción de Producto</button>
-    </div>
-     <!-- Aquí agregamos el enlace "Ruta" usando <a> en lugar de un botón -->
+    <div class="container">
+        <h1 class="text-center">Gestión de Productos</h1>
+        <div class="table-responsive">
+          <table id="productTable" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Precio Detal</th>
+                <th>Precio Mayorista</th>
+                <th>Precio Restaurante</th>
+                <th>Precio caja</th>
+                <th>Cantidad caja</th>
+                <th>IVA</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Contenido dinámico -->
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-start">
+          <button class="btn btn-info" onclick="goToDescription()">Descripción de Producto</button>
+        </div>
         <div class="d-flex justify-content-start mt-3">
-            <a href="diseñar-ruta.html" class="btn btn-success">Ruta</a>
-          </div>
-  </div>
+          <a href="diseñar-ruta.html" class="btn btn-success">Ruta</a>
+        </div>
+      </div>
+      
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="libs/jquery.min.js"></script>
