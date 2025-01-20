@@ -4,59 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optimizador de Rutas de Domicilios</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #map {
-            height: 400px;
-            width: 100%;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #listaPedidos {
-            margin-top: 20px;
-        }
-        .pedido-item {
-            padding: 10px;
-            border: 1px solid #ddd;
-            margin-bottom: 5px;
-            background-color: #f9f9f9;
-        }
-        #loading {
-            text-align: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            margin-bottom: 20px;
-        }
-        #error-container {
-            color: red;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="diseñaruta.css"> 
 </head>
 <body>
     <h1>Ruta de Domicilios</h1>
@@ -84,6 +32,11 @@
         <button type="submit">Añadir Pedido</button>
     </form>
 
+    <div class="controls-container">
+        <button onclick="calcularRuta()">Calcular Ruta</button>
+        <button onclick="limpiarRuta()">Limpiar Ruta</button>
+    </div>
+
     <div id="map"></div>
     
     <h2>Pedidos</h2>
@@ -95,8 +48,8 @@
         let directionsService;
         let directionsRenderer;
         let geocoder;
+        let marcadores = [];
 
-        // Función de inicialización del mapa
         function initMap() {
             if (!window.google || !google.maps) {
                 mostrarError('Google Maps no está disponible. Verifica la conexión y recarga la página.');
@@ -110,7 +63,10 @@
                 });
 
                 directionsService = new google.maps.DirectionsService();
-                directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+                directionsRenderer = new google.maps.DirectionsRenderer({
+                    map: map,
+                    suppressMarkers: true // Para usar nuestros propios marcadores
+                });
                 geocoder = new google.maps.Geocoder();
 
                 mapaInicializado = true;
@@ -118,12 +74,66 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('pedidoForm').style.display = 'block';
                 mostrarPedidos();
+                mostrarMarcadores();
             } catch (error) {
                 mostrarError('Error al inicializar el mapa: ' + error.message);
             }
         }
 
-        // Función para mostrar errores en pantalla
+        function mostrarMarcadores() {
+            // Limpiar marcadores existentes
+            marcadores.forEach(marker => marker.setMap(null));
+            marcadores = [];
+
+            const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+            
+            // Crear marcadores para cada pedido
+            pedidos.forEach((pedido, index) => {
+                const marker = new google.maps.Marker({
+                    position: { lat: pedido.lat, lng: pedido.lng },
+                    map: map,
+                    label: (index + 1).toString(),
+                    title: `Pedido ${index + 1}: ${pedido.direccion}`
+                });
+                marcadores.push(marker);
+            });
+        }
+
+        function calcularRuta() {
+            const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+            if (pedidos.length < 2) {
+                mostrarError('Se necesitan al menos 2 puntos para crear una ruta');
+                return;
+            }
+
+            const origen = { lat: 4.5409, lng: -75.6659 }; // Punto de partida (Armenia)
+            const waypoints = pedidos.map(pedido => ({
+                location: new google.maps.LatLng(pedido.lat, pedido.lng),
+                stopover: true
+            }));
+
+            const request = {
+                origin: origen,
+                destination: origen, // Volver al punto de partida
+                waypoints: waypoints,
+                optimizeWaypoints: true,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+
+            directionsService.route(request, (result, status) => {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(result);
+                } else {
+                    mostrarError('Error al calcular la ruta: ' + status);
+                }
+            });
+        }
+
+        function limpiarRuta() {
+            directionsRenderer.setDirections({ routes: [] });
+            mostrarMarcadores();
+        }
+
         function mostrarError(mensaje) {
             const errorContainer = document.getElementById('error-container');
             errorContainer.textContent = mensaje;
@@ -133,21 +143,21 @@
             }, 5000);
         }
 
-        // Función para guardar pedidos en localStorage
         function guardarPedido(datos) {
             let pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
             pedidos.push({ id: Date.now(), ...datos });
             localStorage.setItem('pedidos', JSON.stringify(pedidos));
             mostrarPedidos();
+            mostrarMarcadores();
             document.getElementById('pedidoForm').reset();
         }
 
-        // Función para mostrar los pedidos almacenados
         function mostrarPedidos() {
             const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
             const container = document.getElementById('listaPedidos');
-            container.innerHTML = pedidos.map(pedido => `
+            container.innerHTML = pedidos.map((pedido, index) => `
                 <div class="pedido-item">
+                    <strong>Parada ${index + 1}</strong><br>
                     <strong>Dirección:</strong> ${pedido.direccion}<br>
                     <strong>Pedido:</strong> ${pedido.pedido}<br>
                     <strong>Domiciliario:</strong> ${pedido.domiciliario}
@@ -155,7 +165,6 @@
             `).join('');
         }
 
-        // Evento DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('pedidoForm');
             form.addEventListener('submit', (e) => {
@@ -189,8 +198,6 @@
         });
     </script>
 
-    <!-- Google Maps Script -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiKkwKqXse5mcndGVmvDvbxwfarctfanI&callback=initMap" async defer></script>
-
 </body>
 </html>
